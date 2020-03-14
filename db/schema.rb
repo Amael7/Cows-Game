@@ -10,10 +10,33 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_14_225610) do
+ActiveRecord::Schema.define(version: 2020_03_14_230749) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "cards", force: :cascade do |t|
+    t.string "image"
+    t.integer "points"
+    t.integer "number"
+    t.boolean "selected"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "games", force: :cascade do |t|
+    t.bigint "users_id"
+    t.bigint "cards_id"
+    t.string "line1"
+    t.string "line2"
+    t.string "line3"
+    t.string "line4"
+    t.integer "game_score"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["cards_id"], name: "index_games_on_cards_id"
+    t.index ["users_id"], name: "index_games_on_users_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -23,8 +46,15 @@ ActiveRecord::Schema.define(version: 2020_03_14_225610) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "username"
+    t.integer "life_points"
+    t.integer "score"
+    t.integer "total_win"
+    t.integer "total_def"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "games", "cards", column: "cards_id"
+  add_foreign_key "games", "users", column: "users_id"
 end
