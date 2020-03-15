@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   # authenticated :user do
   #   root 'games#index', as: :authenticated_root
   # end
-
+  resources :users, only: [:index, :show, :edit, :update]
   resources :games, only: [:index, :new, :create, :show]
   resources :cards, only: [:index]
 end

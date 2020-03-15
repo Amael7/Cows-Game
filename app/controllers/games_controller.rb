@@ -6,6 +6,7 @@ class GamesController < ApplicationController
 
   def new
     @game = Game.new
+    @users = User.all_except(current_user)
   end
 
   # def create

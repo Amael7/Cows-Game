@@ -24,6 +24,10 @@ steph = User.new(
 
 puts 'user created !'
 
+steph.save!
+
+puts 'user saved !'
+
 puts 'creating cards ...'
 
 count = 0

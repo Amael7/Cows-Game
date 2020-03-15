@@ -5,4 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :games
+
+  def self.all_except(user)
+    where.not(id: user.id)
+  end
 end
