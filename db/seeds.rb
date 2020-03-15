@@ -18,7 +18,7 @@ puts 'creating a user...'
 
 steph = User.new(
   username: "Steph",
-  email: "stephane@hotmail.",
+  email: "stephane@hotmail.fr",
   password: "password"
   )
 
