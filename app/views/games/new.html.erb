@@ -1,5 +1,8 @@
 <h1>routes doned !!!</h1>
 
 <% @users.each do |user| %>
-  <h3>username: <%= user.username %></h3>
+  <h3>Username</h3>
+  <%= user.username %>
+  <h3>email</h3>
+  <%= user.email %>
 <% end %>

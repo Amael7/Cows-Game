@@ -36,6 +36,7 @@ points = 0
 while count < 104
   count += 1
   number += 1
+  image = "cards/#{number.to_s}.JPG"
 
   case number
   when 5 then
@@ -98,7 +99,7 @@ while count < 104
     points = 1
   end
 
-  card = Card.new(number: number, points: points, selected: false)
+  card = Card.new(number: number, points: points, image: image,selected: false)
   puts 'card created'
   card.save
 end
@@ -106,5 +107,5 @@ end
 puts 'all cards are created !'
 
 Card.all.each do |card|
-  puts "- #{card.number}. #{card.points}"
+  puts "- #{card.number}. #{card.points} --- #{card.image}"
 end
