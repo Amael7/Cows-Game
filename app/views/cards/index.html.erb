@@ -1,3 +1,10 @@
 <% @cards.each do |card| %>
-  <p><%= card.number %> - <%= card.points %></p>
+  <div class="card">
+    <div class="image-card">
+      <%= image_tag(card.image) %>
+    </div>
+    <div class="number&points">
+      <p><%= card.number %> - <%= card.points %></p>
+    </div>
+  </div>
 <% end %>
